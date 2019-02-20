@@ -60,8 +60,8 @@
     * @returns {Boolean}
     */
    function isExtensionValid(image) {
-      for (var key in acceptableExtensions) {
-         if (image.extension === acceptableExtensions[key]) {
+      for (let value of acceptableExtensions) {
+         if (image.extension === value) {
             return true;
          }
       }
@@ -94,11 +94,11 @@
     * Display Menu Items 
     */
    function displayMenuItems() {
-      for (var key in menuItems) {
+      for (let value of menuItems) {
          var itemElementList = textInElement("li", null, menu);
-         var itemElementLink = textInElement("a", menuItems[key].name, itemElementList);
+         var itemElementLink = textInElement("a", value.name, itemElementList);
          itemElementList.setAttribute("class", "nav-item text-center");
-         itemElementLink.setAttribute("href", menuItems[key].url);
+         itemElementLink.setAttribute("href", value.url);
          itemElementLink.setAttribute("class", "nav-link");
       }
    }
@@ -107,9 +107,9 @@
     * Display Lang items
     */
    function displayLangItems() {
-      for (var key in langItems) {
-         var langElement = textInElement("a", langItems[key], lang);
-         langElement.setAttribute("href", langItems[key]);
+      for (let value of langItems) {
+         var langElement = textInElement("a", value, lang);
+         langElement.setAttribute("href", value);
          langElement.setAttribute("role", "button");
          langElement.setAttribute("class", "text-decoration-none btn btn-light btn-sm");
       }
@@ -120,8 +120,8 @@
     */
    function displayWelcomeItems() {
       var welcomeMessageItems = ["Welcome"];
-      for (var key in welcomeMessageItems) {
-         var welcomeText = textInElement("h4", welcomeMessageItems[key], welcome);
+      for (let value of welcomeMessageItems) {
+         var welcomeText = textInElement("h4", value, welcome);
          welcomeText.setAttribute("style", "color: white;");
 
       }
@@ -133,8 +133,8 @@
        */
    function displayGalleryItems() {
       var galleryMessageItems = ["Gallery"];
-      for (var key in galleryMessageItems) {
-         var galleryText = textInElement("h4", galleryMessageItems[key], galleryTitle);
+      for (let value of galleryMessageItems) {
+         var galleryText = textInElement("h4", value, galleryTitle);
          galleryText.setAttribute("style", "color: white;");
       }
 
@@ -146,14 +146,14 @@
    function displayImageGallery() {
       gallery.innerHTML = "";
 
-      for (var key in images) {
-         if (null === images[key].extension || isExtensionValid(images[key])) {
+      for (let value of images) {
+         if (null === value.extension || isExtensionValid(value)) {
             var divElement = window.document.createElement("div");
             var imageElement = window.document.createElement("img");
             gallery.appendChild(divElement);
             divElement.appendChild(imageElement);
-            imageElement.setAttribute("alt", images[key].name);
-            imageElement.setAttribute("src", images[key].src);
+            imageElement.setAttribute("alt", value.name);
+            imageElement.setAttribute("src", value.src);
             imageElement.setAttribute("class", "img-fluid");
             imageElement.setAttribute("style", "max-width: 100%; heigt: auto;");
             divElement.setAttribute("class", "col-6 col-md-6 col-lg-4 col-xl-3 text-center bg-light border-right");
@@ -211,11 +211,11 @@
     */
    function displayColors(colorElement) {
 
-      for (var key in colorElement) {
+      for (let value of colorElement) {
 
          var divParent = textInElement("div", null, colors);
-         var colorText = textInElement("p", colorElement[key].html_code, divParent);
-         divParent.setAttribute("style", "background-color:" + colorElement[key].html_code + ";'");
+         var colorText = textInElement("p", value.html_code, divParent);
+         divParent.setAttribute("style", "background-color:" + value.html_code + ";'");
          colorText.setAttribute("style", "color:white;");
       }
 
@@ -337,12 +337,11 @@
                displayImageGallery();
                gallery.lastChild.firstChild.onclick();
                window.localStorage.setItem(namespace, JSON.stringify(images));
-            }
+            };
             reader.onerror = function (event) {
                alert("Lecture impossible");
             };
             reader.readAsDataURL(uploadedFile);
-            console.log(colorObject);
 
             return;
          }
@@ -366,8 +365,8 @@
       var extensionItems = window.document.createElement("ul");
       footer.appendChild(extensionItems);
       extensionTitle.setAttribute("style", "color:#FFFFFF; display: inline-block;");
-      for (var key in acceptableExtensions) {
-         var extensionItem = textInElement("li", acceptableExtensions[key], extensionItems);
+      for (let value of acceptableExtensions) {
+         var extensionItem = textInElement("li", value, extensionItems);
          extensionItem.setAttribute("style", "display: inline-block; width:3em; color:#FFFFFF; font-weight: bold;");
       }
    }
