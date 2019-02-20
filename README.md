@@ -1,0 +1,2 @@
+# color-extract
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/bb2d4d8efae64625b20d9dd7054ba415)](https://app.codacy.com/app/LudvigSahakyan/color-extract?utm_source=github.com&utm_medium=referral&utm_content=LudvigSahakyan/color-extract&utm_campaign=Badge_Grade_Dashboard)
