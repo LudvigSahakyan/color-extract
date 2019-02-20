@@ -1,0 +1,119 @@
+<html>
+
+<head>
+
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="dist/index.css" />
+    <!--Relative to Head-->
+    <link rel="shortcut icon" type="image png" href="assets/imageLogo/favicon.png" />
+    <title>Color Extract</title>
+</head>
+
+<body style="background-color:rgb(245, 245, 245);">
+
+    <header>
+
+        <!--Լanguage items here-->
+        <div class="container-fluid col-11 col-xl-8">
+            <div id="lang" class="ml-auto text-right col-11 col-lg-8 col-xl-4"> </div>
+        </div>
+
+        <!--Navigation here-->
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container-fluid col-11 col-xl-8 bg-light">
+
+                <!--Logo and Title here-->
+                <a class="navbar-brand" href="index.html" style="color:rgb(167, 167, 182);">
+                    <img src="assets/imagelogo/logo.png" style="max-block-size: 3em;" />
+                    <b> Color Extract </b>
+                </a>
+
+                <!--Menu Sandwich here-->
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
+                    aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarText">
+
+                    <!--Navigation items here-->
+                    <ul id="menu" class="navbar-nav ml-auto"></ul>
+
+                </div>
+            </div>
+        </nav>
+
+    </header>
+
+    <!--Main section here-->
+    <main class="container-fluid" style="background-color:rgb(240, 240, 240);">
+
+        <!--Welcome message here-->
+        <div class="container col-11 col-xl-8" style="background-color:rgba(133, 133, 141, 0.178); ">
+            <div id="welcome" class="text-left"> </div>
+        </div>
+
+        <!--Upload and preview sections here-->
+        <div class="container col-11 col-xl-8" style="padding-top: 0.5em; background-color:rgba(133, 133, 141, 0.459);">
+
+            <!--Submit or Upload here-->
+            <div class="row" style="padding:0.5em;">
+
+                <!--Upload button here-->
+                <input id="file" type="file" style="display:none;" />
+                <div id="upload" style="margin-right:1em; margin-bottom:1em;"></div>
+
+                <!--Submit form for url here-->
+                <div id="submitForm"></div>
+
+            </div>
+
+            <!--Preview section here-->
+            <div class="row h-50 justify-content-center" style="padding: 0.5em;">
+
+                <!--Color preview here-->
+                <div id="colors" class="w-25 bg-light border-right;"></div>
+
+                <!--Image preview here-->
+                <div id="preview" class="w-75" style=" background-repeat: no-repeat; background-image: url(assets/images/placeholder.png) ; background-position: left; background-size:contain; background-color:rgba(133, 133, 141, 0.26);">
+                </div>
+
+            </div>
+
+        </div>
+
+        <!--Delete button here-->
+        <div class="container col-11 col-xl-8" style="background-color:rgba(133, 133, 141, 0.445);">
+            <div id="delete" class="text-right" style="padding-bottom:0.5em;"> </div>
+        </div>
+
+        <!--Gallery title here-->
+        <div class="container col-11 col-xl-8" style="background-color:rgba(133, 133, 141, 0.178);">
+            <div id="galleryTitle" class="row text-left" style="padding-left:1em;"> </div>
+        </div>
+
+        <!--Gallery here-->
+        <div class="container col-11  col-xl-8 bg-light">
+            <div id="gallery" class="row" style="padding-top: 0.5em; padding-bottom: 1em;"> </div>
+        </div>
+
+        <div class="container col-11 col-xl-8" style="margin-bottom: 5em;">
+        </div>
+
+    </main>
+
+    <!--Footer here -->
+    <footer class="container-fluid" style="background-color:rgb(240, 240, 240); position:relative;">
+
+        <!--Extensions list here-->
+        <div class="container col-11 col-xl-8">
+            <div id="bottom" class="row" style="float: bottom; padding: 1em; background-color: rgba(133, 133, 141, 0.459);"></div>
+        </div>
+
+    </footer>
+
+    
+    <script type="text/javascript" src="dist/index.js"> </script>
+
+</body>
+
+</html>
