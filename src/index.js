@@ -165,14 +165,6 @@
       }
 
    }
-   /**
-    * @param {HTMLElement} imagePreviewElement 
-    */
-   function registerEvent(imagePreviewElement) {
-      imagePreviewElement.onclick = function (event) {
-         onClickImage(event, this);
-      };
-   }
 
    /**
     * 
@@ -221,6 +213,15 @@
    }
 
    /**
+    * @param {HTMLElement} imagePreviewElement 
+    */
+   function registerEvent(imagePreviewElement) {
+      imagePreviewElement.onclick = function (event) {
+         onClickImage(event, this);
+      };
+   }
+
+   /**
     * Display Image Gallery
     */
    function displayImageGallery() {
@@ -245,8 +246,6 @@
       }
    }
 
-
-
    /**
     * Delete
     * 
@@ -265,43 +264,6 @@
       deleteButton.innerHTML = "";
    }
 
-   /**
-    * Upload
-    */
-   function displayUploadButton() {
-      if (!isGalleryFull()) {
-         var uploadButtonElement = textInElement("button", "upload an image", upload);
-         uploadButtonElement.setAttribute("class", "btn btn-light btn-md text-secondary");
-
-         var formForSubmit = textInElement("form", null, submitForm);
-         var submitUrl = textInElement("input", null, formForSubmit);
-         var submitButton = textInElement("input", "submit", formForSubmit);
-         formForSubmit.setAttribute("action", "");
-         formForSubmit.setAttribute("method", "GET");
-         formForSubmit.setAttribute("class", "form-row");
-         submitUrl.setAttribute("type", "url");
-         submitUrl.setAttribute("required", "required");
-         submitUrl.setAttribute("class", "bg-light text-secondary");
-         submitUrl.setAttribute("placeholder", " or submit an url source ");
-         submitButton.setAttribute("type", "submit");
-         submitButton.setAttribute("value", "send");
-         submitButton.setAttribute("class", "btn btn-light btn-md text-secondary");
-         submitButton.setAttribute("style", "margin-left:0.2em;");
-
-         formForSubmit.addEventListener("submit", onSubmitForm);
-         inputFile.addEventListener("change", onChangeFile);
-         uploadButtonElement.addEventListener("click", function () {
-            inputFile.click();
-         });
-
-
-
-
-         return;
-      }
-      var boldElement = textInElement("b", "Gallery is full", upload);
-      boldElement.setAttribute("class", "text-secondary");
-   }
 
    /**
     * 
@@ -380,6 +342,41 @@
       var body = new FormData;
       body.append("image", this.files[0]);
       xhr.send(body);
+   }
+
+   /**
+    * Upload
+    */
+   function displayUploadButton() {
+      if (!isGalleryFull()) {
+         var uploadButtonElement = textInElement("button", "upload an image", upload);
+         uploadButtonElement.setAttribute("class", "btn btn-light btn-md text-secondary");
+
+         var formForSubmit = textInElement("form", null, submitForm);
+         var submitUrl = textInElement("input", null, formForSubmit);
+         var submitButton = textInElement("input", "submit", formForSubmit);
+         formForSubmit.setAttribute("action", "");
+         formForSubmit.setAttribute("method", "GET");
+         formForSubmit.setAttribute("class", "form-row");
+         submitUrl.setAttribute("type", "url");
+         submitUrl.setAttribute("required", "required");
+         submitUrl.setAttribute("class", "bg-light text-secondary");
+         submitUrl.setAttribute("placeholder", " or submit an url source ");
+         submitButton.setAttribute("type", "submit");
+         submitButton.setAttribute("value", "send");
+         submitButton.setAttribute("class", "btn btn-light btn-md text-secondary");
+         submitButton.setAttribute("style", "margin-left:0.2em;");
+
+         formForSubmit.addEventListener("submit", onSubmitForm);
+         inputFile.addEventListener("change", onChangeFile);
+         uploadButtonElement.addEventListener("click", function () {
+            inputFile.click();
+         });
+
+         return;
+      }
+      var boldElement = textInElement("b", "Gallery is full", upload);
+      boldElement.setAttribute("class", "text-secondary");
    }
 
    /**
