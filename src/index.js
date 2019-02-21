@@ -34,13 +34,13 @@
    var footer = window.document.querySelector("#bottom");
    var preview = window.document.querySelector("#preview");
 
-/**
-    * 
-    * @param {String} tagName 
-    * @param {String} text 
-    * @param {HTMLElement} target 
-    * @returns {HTMLElement}
-    */
+   /**
+       * 
+       * @param {String} tagName 
+       * @param {String} text 
+       * @param {HTMLElement} target 
+       * @returns {HTMLElement}
+       */
    function textInElement(tagName, text, target) {
 
       if ("string" !== typeof tagName) {
@@ -155,8 +155,8 @@
    }
 
    /**
-       * Display Gallery Text
-       */
+    * Display Gallery Text
+    */
    function displayGalleryItems() {
       var galleryMessageItems = ["Gallery"];
       for (let value of galleryMessageItems) {
@@ -165,32 +165,6 @@
       }
 
    }
-
-   /**
-    * Display Image Gallery
-    */
-   function displayImageGallery() {
-      gallery.innerHTML = "";
-
-      for (let value of images) {
-         if (null === value.extension || isExtensionValid(value)) {
-            var divElement = window.document.createElement("div");
-            var imageElement = window.document.createElement("img");
-            gallery.appendChild(divElement);
-            divElement.appendChild(imageElement);
-            imageElement.setAttribute("alt", value.name);
-            imageElement.setAttribute("src", value.src);
-            imageElement.setAttribute("class", "img-fluid");
-            imageElement.setAttribute("style", "max-width: 100%; heigt: auto;");
-            divElement.setAttribute("class", "col-6 col-md-6 col-lg-4 col-xl-3 text-center bg-light border-right");
-            divElement.setAttribute("style", "padding-top: 1em; padding-bottom: 1em;");
-            registerEvent(imageElement);
-
-         } 
-         
-      }
-   }
-
    /**
     * @param {HTMLElement} imagePreviewElement 
     */
@@ -198,6 +172,22 @@
       imagePreviewElement.onclick = function (event) {
          onClickImage(event, this);
       };
+   }
+
+   /**
+    * 
+    * @param {Element} colorElement 
+    */
+   function displayColors(colorElement) {
+
+      for (let value of colorElement) {
+
+         var divParent = textInElement("div", null, colors);
+         var colorText = textInElement("p", value.html_code, divParent);
+         divParent.setAttribute("style", "background-color:" + value.html_code + ";'");
+         colorText.setAttribute("style", "color:white;");
+      }
+
    }
 
    /**
@@ -223,7 +213,7 @@
       displayColors(findRecentImage.colors.background_colors);
       displayColors(findRecentImage.colors.foreground_colors);
       displayColors(findRecentImage.colors.image_colors);
-   
+
 
       deleteButtonElement.addEventListener("click", function (event) {
          onClickDelete(event, imagePreviewElement);
@@ -231,20 +221,31 @@
    }
 
    /**
-    * 
-    * @param {Element} colorElement 
+    * Display Image Gallery
     */
-   function displayColors(colorElement) {
+   function displayImageGallery() {
+      gallery.innerHTML = "";
 
-      for (let value of colorElement) {
+      for (let value of images) {
+         if (null === value.extension || isExtensionValid(value)) {
+            var divElement = window.document.createElement("div");
+            var imageElement = window.document.createElement("img");
+            gallery.appendChild(divElement);
+            divElement.appendChild(imageElement);
+            imageElement.setAttribute("alt", value.name);
+            imageElement.setAttribute("src", value.src);
+            imageElement.setAttribute("class", "img-fluid");
+            imageElement.setAttribute("style", "max-width: 100%; heigt: auto;");
+            divElement.setAttribute("class", "col-6 col-md-6 col-lg-4 col-xl-3 text-center bg-light border-right");
+            divElement.setAttribute("style", "padding-top: 1em; padding-bottom: 1em;");
+            registerEvent(imageElement);
 
-         var divParent = textInElement("div", null, colors);
-         var colorText = textInElement("p", value.html_code, divParent);
-         divParent.setAttribute("style", "background-color:" + value.html_code + ";'");
-         colorText.setAttribute("style", "color:white;");
+         }
+
       }
-
    }
+
+
 
    /**
     * Delete
