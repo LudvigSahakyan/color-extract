@@ -32,6 +32,32 @@
    var deleteButton = window.document.querySelector("#delete");
    var galleryTitle = window.document.querySelector("#galleryTitle");
    var footer = window.document.querySelector("#bottom");
+   var preview = window.document.querySelector("#preview");
+
+/**
+    * 
+    * @param {String} tagName 
+    * @param {String} text 
+    * @param {HTMLElement} target 
+    * @returns {HTMLElement}
+    */
+   function textInElement(tagName, text, target) {
+
+      if ("string" !== typeof tagName) {
+         throw new Error("tagName required");
+      }
+      var tagNameContent = window.document.createElement(tagName);
+
+      if ("undefined" != typeof text && text !== null) {
+
+         tagNameContent.appendChild(window.document.createTextNode(text));
+      }
+      if (target instanceof HTMLElement) {
+         target.appendChild(tagNameContent);
+      }
+      return tagNameContent;
+
+   }
 
    /**
     * Add Image Items
@@ -171,7 +197,7 @@
    function registerEvent(imagePreviewElement) {
       imagePreviewElement.onclick = function (event) {
          onClickImage(event, this);
-      }
+      };
    }
 
    /**
@@ -188,7 +214,6 @@
       deleteButtonElement.appendChild(deleteButtonText);
       deleteButton.appendChild(deleteButtonElement);
       deleteButtonElement.setAttribute("class", "btn btn-light btn-md text-secondary");
-      var preview = window.document.getElementById("preview");
       preview.style.backgroundImage = "url(" + imagePreviewElement.getAttribute("src") + ")";
 
       var findRecentImage = images.find(function (elem) {
@@ -289,7 +314,6 @@
       var form = this;
       xhr.onload = function (event) {
          var colorObject = JSON.parse(this.responseText);
-         console.log(colorObject);
          if (200 === this.status) {
             pushImage(
                form.elements[0].value,
@@ -369,31 +393,6 @@
          var extensionItem = textInElement("li", value, extensionItems);
          extensionItem.setAttribute("style", "display: inline-block; width:3em; color:#FFFFFF; font-weight: bold;");
       }
-   }
-
-   /**
-    * 
-    * @param {String} tagName 
-    * @param {String} text 
-    * @param {HTMLElement} target 
-    * @returns {HTMLElement}
-    */
-   function textInElement(tagName, text, target) {
-
-      if ("string" !== typeof tagName) {
-         throw new Error("tagName required");
-      }
-      var tagNameContent = window.document.createElement(tagName);
-
-      if ("undefined" != typeof text && text !== null) {
-
-         tagNameContent.appendChild(window.document.createTextNode(text));
-      }
-      if (target instanceof HTMLElement) {
-         target.appendChild(tagNameContent);
-      }
-      return tagNameContent;
-
    }
 
    //
